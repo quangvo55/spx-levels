@@ -31,7 +31,7 @@ def calculate_moving_averages(data, windows=[50, 200]):
         df[f'MA_{window}'] = df['Close'].rolling(window=window).mean()
     return df
 
-def identify_swing_points(data, order=10):
+def identify_swing_points(data, order=20):
     """
     Identify swing highs and lows
     
@@ -704,7 +704,7 @@ def main(ticker="^GSPC", period="1y", include_vix=True, plot=True, output_folder
     
     # Plot chart if requested
     if plot:
-        chart_file = os.path.join(output_folder, f"{ticker_clean}_chart_{date_str}.png")
+        chart_file = os.path.join(output_folder, f"{ticker_clean}_chart_old.png")
         plot_levels(data, results, save_path=chart_file)
     
     return output

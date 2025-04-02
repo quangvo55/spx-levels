@@ -4,21 +4,23 @@ Current Price: 5633.07
 VIX Analysis: VIX above 20-day average - may need to decrease for upside targets.
 
 Resistance Levels:
-6060.28 ***** - Volume cluster, Fibonacci 50% (Fib_Down_2), Fibonacci 78% (Fib_Down_3), Fibonacci 38% (Fib_Down_2)
-5638.30 ***** - Fibonacci 50% (Fib_Down_1), Volume cluster, Round number (25s), Round number (50s)
-5888.23 **** - Volume cluster, MA_50 support/resistance, Fibonacci 23% (Fib_Down_3)
-5719.63 *** - Recent price action, Fibonacci 78% (Fib_Down_1)
-5785.29 *** - Recent price action, Fibonacci 100 (Fib_Down_1)
-6005.97 *** - Fibonacci 0 (Fib_Down_2), Fibonacci 61% (Fib_Down_3)
-6032.59 *** - Volume cluster, Fibonacci 23% (Fib_Down_2)
-6131.34 *** - Fibonacci 100 (Fib_Down_2), Fibonacci 100 (Fib_Down_3)
+5993.13 ***** - Volume cluster, Fibonacci 78% (Fib_Up_1), Fibonacci 61% (Fib_Up_2)
+6057.89 **** - Volume cluster
+5720.17 *** - Recent price action, Round number (25s)
+5895.31 *** - Fibonacci 61% (Fib_Up_1), Volume cluster
+6032.49 *** - Fibonacci 78% (Fib_Up_2), Volume cluster
+5651.65 ** - Fibonacci 23% (Fib_Up_1), Round number (50s)
+5672.33 ** - Round number (25s), Fibonacci 100 (Fib_Up_3)
+5786.95 ** - Recent price action
 
 Support Levels:
-5604.55 ***** - Round number (100s), Volume cluster, Fibonacci 38% (Fib_Down_1), Recent price action
-5503.10 **** - Round number (100s), Fibonacci 0 (Fib_Down_1), Recent price action
+5602.88 ***** - Recent price action, Volume cluster, Round number (100s)
+5503.10 **** - Recent price action, Fibonacci 0 (Fib_Up_1), Round number (100s)
+5483.71 *** - Volume cluster, Fibonacci 61% (Fib_Up_3)
+5629.53 *** - Volume cluster, Round number (25s)
 5454.99 ** - Volume cluster
-5478.86 ** - Volume cluster
-5572.74 ** - Round number (25s), Fibonacci 23% (Fib_Down_1)
-5550.00 * - Round number (50s)
+5571.60 ** - Round number (25s), Fibonacci 78% (Fib_Up_3)
+5195.54 * - Fibonacci 0 (Fib_Up_3)
+5307.43 * - Fibonacci 23% (Fib_Up_3)
 
 Strength Indicator: * (weak) to ***** (very strong)

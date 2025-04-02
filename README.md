@@ -1,10 +1,14 @@
-# S&P 500 Technical Levels Calculator
+# SPX Levels
 
-This Python tool automatically calculates key technical levels for the S&P 500 index (or any other stock/index) using multiple technical analysis methods. It generates both text output of important support and resistance levels and visual charts with volume profile analysis.
+A modular Python package for advanced technical analysis of stock and index price levels.
 
-![S&P 500 Technical Analysis](example_output.png)
+![SPX Technical Analysis](outputs/GSPC_chart_2025-04-02.png)
 
-## Features
+## Overview
+
+SPX Levels is a comprehensive tool for identifying key technical levels in financial markets. It combines multiple technical analysis methodologies into a unified framework that produces actionable support and resistance levels.
+
+### Features
 
 - **Multi-Method Technical Analysis**:
   - Volume Profile Analysis
@@ -24,48 +28,91 @@ This Python tool automatically calculates key technical levels for the S&P 500 i
   - Chart visualization with volume profile
   - Color-coded Fibonacci levels with percentage labels
   - Support and resistance levels displayed with strength indicators
+  - Swing points analysis for Fibonacci calculations
 
 ## Installation
 
-1. Clone this repository:
+### From Source
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/spx-technical-levels.git
-   cd spx-technical-levels
+   git clone https://github.com/yourusername/spx-levels.git
+   cd spx-levels
    ```
 
-2. Install the required packages:
+2. Install the package and dependencies:
    ```bash
-   pip install pandas numpy yfinance matplotlib scipy
+   pip install -e .
    ```
+
+### Dependencies
+
+- pandas>=1.3.0
+- numpy>=1.20.0
+- yfinance>=0.1.70
+- matplotlib>=3.4.0
+- scipy>=1.7.0
 
 ## Usage
 
-### Basic Usage
-
-Run the script with default settings (S&P 500, 1-year period):
+### Command Line
 
 ```bash
-python spx_levels.py
+# Basic usage (analyzes S&P 500 with 1-year of data)
+spx-levels
+
+# Analyze a specific ticker
+spx-levels --ticker="AAPL"
+
+# Change time period
+spx-levels --period="6mo"
+
+# Specify output folder
+spx-levels --output="my_analysis"
+
+# Disable VIX analysis
+spx-levels --no-vix
+
+# Don't display chart (just save to file)
+spx-levels --no-plot
 ```
 
-### Command-Line Options
+### Python API
 
-```bash
-python spx_levels.py --ticker="^GSPC" --period="6mo" --output="my_analysis"
+```python
+from spx_levels.main import analyze_market
+
+# Simple usage
+analyze_market(ticker="^GSPC", period="1y")
+
+# More options
+results = analyze_market(
+    ticker="AAPL",
+    period="6mo",
+    include_vix=True,
+    plot=True,
+    output_folder="apple_analysis"
+)
 ```
 
-Available options:
-- `--ticker`: Stock/index symbol (default: `^GSPC` for S&P 500)
-- `--period`: Data period (default: `1y`, options: `1d`, `5d`, `1mo`, `3mo`, `6mo`, `1y`, `2y`, `5y`, `10y`, `ytd`, `max`)
-- `--no-vix`: Exclude VIX analysis
-- `--no-plot`: Do not display plot
-- `--output`: Output folder for results (default: `outputs`)
+### Advanced Usage
 
-### Output
+For more control over the analysis process, you can use the individual components:
 
-The script generates:
+```python
+from spx_levels.data import MarketData
+from spx_levels.analysis import PriceAction, FibonacciAnalysis, VolumeAnalysis
+from spx_levels.levels import TechnicalLevels, PsychologicalLevels
+from spx_levels.visualization import ChartGenerator
 
-1. **Text file** with key levels and their sources:
+# See examples/simple_analysis.py for a complete example
+```
+
+## Output Files
+
+The package generates three output files:
+
+1. **Technical Levels Report** (`TICKER_levels_DATE.txt`):
    ```
    Technical Levels Report - 2025-04-02
    Current Price: 5633.06
@@ -89,7 +136,7 @@ The script generates:
    Strength Indicator: * (weak) to ***** (very strong)
    ```
 
-2. **Swing points file** detailing all the swing highs and lows used for Fibonacci calculations:
+2. **Swing Points Analysis** (`TICKER_swing_points_DATE.txt`):
    ```
    Swing Points Analysis - 2025-04-02
    ============================================================
@@ -112,16 +159,14 @@ The script generates:
    of these swing highs and lows, prioritizing recent swings.
    ```
 
-3. **Chart visualization** showing:
+3. **Technical Chart** (`TICKER_chart_DATE.png`):
    - Price chart with moving averages
    - Volume profile on left side
    - Support and resistance levels with labels
-   - Color-coded Fibonacci retracement levels (0%, 23.6%, 38.2%, 50%, 61.8%, 78.6%, 100%)
+   - Color-coded Fibonacci retracement levels
    - Current price marker
 
-All files are saved to the specified output folder (default: `outputs`).
-
-## Methodology
+## Analysis Methodology
 
 ### Level Calculation
 
@@ -161,14 +206,60 @@ Levels are ranked by the number of technical factors that converge on that price
 - Price action levels get extra weight
 - Multiple Fibonacci confluences get extra weight
 
+## Project Structure
+
+```
+spx_levels/
+│
+├── README.md                 # Project documentation
+├── setup.py                  # Package installation script
+├── requirements.txt          # Dependencies
+│
+├── spx_levels/              # Main package
+│   ├── __init__.py           # Package initialization
+│   ├── main.py               # Entry point with CLI handling
+│   │
+│   ├── data/                 # Data handling
+│   │   ├── __init__.py
+│   │   └── market_data.py    # Data fetching and preparation
+│   │
+│   ├── analysis/             # Technical analysis components
+│   │   ├── __init__.py
+│   │   ├── fibonacci.py      # Fibonacci calculations
+│   │   ├── volume.py         # Volume profile analysis
+│   │   ├── price_action.py   # Price action analysis (swings, support/resistance)
+│   │   ├── moving_averages.py # Moving average calculations
+│   │   └── volatility.py     # VIX and volatility analysis
+│   │
+│   ├── levels/               # Level identification
+│   │   ├── __init__.py
+│   │   ├── technical_levels.py # Main level identification
+│   │   ├── psychological.py  # Psychological levels
+│   │   └── strength.py       # Level strength calculation
+│   │
+│   ├── visualization/        # Visualization components
+│   │   ├── __init__.py
+│   │   ├── charts.py         # Chart generation
+│   │   └── styling.py        # Visual styling settings
+│   │
+│   └── output/               # Output formatting
+│       ├── __init__.py
+│       ├── text_output.py    # Text report generation
+│       └── file_output.py    # File output handling
+│
+├── examples/                 # Example scripts
+│   └── simple_analysis.py    # Basic usage example
+│
+└── outputs/                  # Default output directory
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Technical analysis concepts from various sources including technical traders and market analysts
-- Built using yfinance for data retrieval
 
 ## Disclaimer
 
