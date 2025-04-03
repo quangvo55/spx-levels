@@ -1,0 +1,17 @@
+Swing Points Analysis - 2025-04-04
+============================================================
+
+SWING HIGHS (used for Fibonacci calculations)
+------------------------------------------------------------
+2025-02-20: 6134.50
+2024-12-06: 6099.97
+2024-07-16: 5669.67
+
+SWING LOWS (used for Fibonacci calculations)
+------------------------------------------------------------
+2025-01-14: 5805.42
+2024-08-07: 5195.54
+2024-04-22: 4969.40
+
+Note: Fibonacci retracements are calculated using combinations
+of these swing highs and lows, prioritizing recent swings.
