@@ -2,7 +2,7 @@
 
 A modular Python package for advanced technical analysis of stock and index price levels.
 
-![SPX Technical Analysis](outputs/GSPC_chart_2025-04-02.png)
+![SPX Technical Analysis](SPY_chart_2025-05-07.png)
 
 ## Overview
 
@@ -62,7 +62,7 @@ SPX Levels is a comprehensive tool for identifying key technical levels in finan
 spx-levels
 
 # Analyze a specific ticker
-spx-levels --ticker="AAPL"
+spx-levels --ticker="NQ%3DF"
 
 # Change time period
 spx-levels --period="6mo"
